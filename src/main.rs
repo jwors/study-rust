@@ -22,7 +22,6 @@ use std::cmp::Ordering;
 fn main (){
     print!("Guess the number");
     let secret_number =rand::thread_rng().gen_range(1..=100);
-    println!("The secert number is : {secret_number}");
     loop {
 
         println!("Please input you guess");
@@ -30,8 +29,11 @@ fn main (){
         // let 默认不可变的  加了mut是可变的, string::new() 返回 utf-8编码内容
         let mut guess  = String::new();
         io::stdin().read_line(&mut guess).expect("failed to line");
-    
-        let guess:u32=guess.trim().parse().expect("Please type a number");
+
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
         /*
             这里创建了一个叫做 guess 的变量。不过等等，不是已经有了一个叫做 guess 的变量了吗？
             确实如此，不过 Rust 允许用一个新值来 隐藏 （Shadowing） guess 之前的值。
