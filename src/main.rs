@@ -66,5 +66,15 @@ fn main (){
     println!("1 + 2 = {}",1u32 + 2);
 
     // 整数相减
-    println!("1 - 2 = {}",1i32  - 2)
+    println!("1 - 2 = {}",1i32  - 2);
+
+    let pair = (32,true);
+    println!("the reversed pair is {:?}", reverse(pair));
+
+}
+
+//元组可以充当函数的参数和返回值
+fn reverse(pair:(i32,bool)) ->(bool,i32) {
+    let (integer,boolean) = pair;
+    (boolean,integer)
 }
