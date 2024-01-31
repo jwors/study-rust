@@ -75,6 +75,7 @@ fn main (){
 
 //元组可以充当函数的参数和返回值
 fn reverse(pair:(i32,bool)) ->(bool,i32) {
+    // 元组以 （） 表示
     let (integer,boolean) = pair;
     (boolean,integer)
 }
